@@ -1,0 +1,46 @@
+{
+  "title": "ViaggiaTreno",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add a station",
+        "description": "Search an Italian station. Each station creates arrivals, departures and a last successful refresh sensor. Data uses ViaggiaTreno's public HTTP API.",
+        "data": {"query": "Station name", "refresh_interval": "Refresh interval (seconds)"}
+      },
+      "reconfigure": {
+        "title": "Replace this station",
+        "description": "Select a different station for this entry. Existing entity IDs are preserved, so cards and automations will now refer to the new station. To keep both stations, add another integration entry instead.",
+        "data": {"query": "Station name", "refresh_interval": "Refresh interval (seconds)"}
+      },
+      "station": {
+        "title": "Select station",
+        "data": {"station_id": "Station"}
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to obtain valid data from ViaggiaTreno. Please try again later.",
+      "no_stations": "No matching stations found. Try a different name."
+    },
+    "abort": {
+      "already_configured": "This station is already configured.",
+      "invalid_station": "The selected station is invalid. Start again.",
+      "reconfigure_successful": "Station updated successfully."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Polling options",
+        "description": "Both boards refresh together. Minimum 30 seconds; default 60 seconds. Changing this reloads only this station, not Home Assistant.",
+        "data": {"refresh_interval": "Refresh interval (seconds)"}
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "arrivi": {"name": "Arrivals"},
+      "partenze": {"name": "Departures"},
+      "last_refresh": {"name": "Last successful refresh"}
+    }
+  }
+}
