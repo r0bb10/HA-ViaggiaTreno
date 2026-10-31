@@ -1,0 +1,43 @@
+{
+  "title": "ViaggiaTreno",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Aggiungi una stazione",
+        "description": "Cerca una stazione italiana. Ogni stazione crea i sensori arrivi, partenze e ultimo aggiornamento riuscito. I dati provengono dalle API HTTP di ViaggiaTreno.",
+        "data": {"query": "Nome della stazione", "refresh_interval": "Intervallo di aggiornamento (secondi)"}
+      },
+      "reconfigure": {
+        "title": "Sostituisci questa stazione",
+        "description": "Gli ID delle entità non cambiano: schede e automazioni si riferiranno alla nuova stazione. Per mantenere entrambe le stazioni, aggiungi un'altra istanza dell'integrazione.",
+        "data": {"query": "Nome della stazione", "refresh_interval": "Intervallo di aggiornamento (secondi)"}
+      },
+      "station": {"title": "Seleziona la stazione", "data": {"station_id": "Stazione"}}
+    },
+    "error": {
+      "cannot_connect": "Impossibile ottenere dati validi da ViaggiaTreno. Riprova più tardi.",
+      "no_stations": "Nessuna stazione trovata. Prova un altro nome."
+    },
+    "abort": {
+      "already_configured": "Questa stazione è già configurata.",
+      "invalid_station": "Stazione non valida. Ricomincia la configurazione.",
+      "reconfigure_successful": "Stazione aggiornata correttamente."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opzioni di aggiornamento",
+        "description": "Entrambi i tabelloni si aggiornano insieme. Minimo 30 secondi; predefinito 60. La modifica ricarica solo questa stazione, non Home Assistant.",
+        "data": {"refresh_interval": "Intervallo di aggiornamento (secondi)"}
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "arrivi": {"name": "Arrivi"},
+      "partenze": {"name": "Partenze"},
+      "last_refresh": {"name": "Ultimo aggiornamento riuscito"}
+    }
+  }
+}

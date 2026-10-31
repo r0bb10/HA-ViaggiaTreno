@@ -1,0 +1,144 @@
+[
+  {
+    "file": "operators/trenitalia.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=332&arrivals=False",
+    "alt": "TRENITALIA",
+    "image_sha256": "97c3d12422229b4a7d5118439964815874778f81d058c6a9bf5f5784e0b8a1a3"
+  },
+  {
+    "file": "operators/trenord.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=332&arrivals=False",
+    "alt": "TRENORD",
+    "image_sha256": "0f930fc103cf318cea1abb7ec331d489d82e04d10765e482e5cf4090d0c762d3"
+  },
+  {
+    "file": "operators/intercity.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=332&arrivals=False",
+    "alt": "INTERCITY",
+    "image_sha256": "dced6ac066f033235e2ed81ba3c33cbaab9e6c8cb4ce47698b55c8cc4d5b09f6"
+  },
+  {
+    "file": "categories/ic.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=332&arrivals=False",
+    "alt": "Categoria INTERCITY",
+    "image_sha256": "701922f868e3a8549cb376f5a535fa5fbbb106fef9cfaf24e9b56f4038b3554b"
+  },
+  {
+    "file": "categories/reg.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=332&arrivals=False",
+    "alt": "Categoria REG",
+    "image_sha256": "7453aad47e0c362392bae6e82af4f2b41b38786aa21297a87e2e713f07a59e95"
+  },
+  {
+    "file": "categories/re.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=332&arrivals=False",
+    "alt": "Categoria RE",
+    "image_sha256": "5e00f561343a5bb4004ad7fb43e35b99d4dbdffff06f6c88ed155ec9e92f2dbc"
+  },
+  {
+    "file": "operators/trenitalia-tper.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:Logo_Trenitalia_Tper_(2022).svg",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Logo_Trenitalia_Tper_%282022%29.svg",
+    "alt": "Trenitalia Tper",
+    "image_sha256": "f5fd072092bafb038d72c5178fc2d57be815d2cad2bf3b89d27269450a7c2efe",
+    "asset_sha256": "21a71608d6669023074e8a53331b1c1c779210bbcd7544b2c83ad2cfaeba1d73",
+    "license": "PD-textlogo; trademark rights retained",
+    "processing": "Only static SVG paths and groups retained; metadata removed."
+  },
+  {
+    "file": "categories/rv.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=1728&arrivals=False",
+    "alt": "Categoria RV",
+    "image_sha256": "d614ba390c7e9991e74f22e3eb093d52a39afb8e66dd3c91249e447e2259e273",
+    "asset_sha256": "e92c0b807f2844d53bbd70cede271ce862ac0239c10d68b05419ab316e22732a",
+    "license": "Third-party branding; rights retained by respective owners.",
+    "processing": "Raster artwork normalized to transparent PNG, cropped and embedded in inert SVG."
+  },
+  {
+    "file": "categories/ec.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=1728&arrivals=False",
+    "alt": "Categoria EC",
+    "image_sha256": "341cb23845dca7d4fe995d6dfea6287388230cc2eb6ac52af99a579f90d1581d",
+    "asset_sha256": "7d5f85b6afa8af987bd27bdc2bd9174ab1de48c2f28ee3ffc52a858f4db319b5",
+    "license": "Third-party branding; rights retained by respective owners.",
+    "processing": "Raster artwork normalized to transparent PNG, cropped and embedded in inert SVG."
+  },
+  {
+    "file": "categories/icn.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=1728&arrivals=False",
+    "alt": "Categoria INTERCITY NOTTE",
+    "image_sha256": "79a1c6a4a2ad19cc87d1d67aa4759a73ca69835c2b20766ef358a8bc35ca7b66",
+    "asset_sha256": "fe6088a3637a7351d8f336a54f938467b417f3cc23c7871566e938a5ea4f9682",
+    "license": "Third-party branding; rights retained by respective owners.",
+    "processing": "Raster artwork normalized to transparent PNG, cropped and embedded in inert SVG."
+  },
+  {
+    "file": "categories/fr.svg",
+    "source": "https://iechub.rfi.it/ArriviPartenze/ArrivalsDepartures/Monitor?placeId=1728&arrivals=False",
+    "alt": "FRECCIAROSSA",
+    "image_sha256": "48e75fd305f0c2092ce7ebab9cf63b519853786d59ad98950c6a12cad9cf7046",
+    "asset_sha256": "98bb6e221b10219d032e4abed2b8ec77f6e77dede8649ff6eab1deab56a9db54",
+    "license": "Third-party branding; rights retained by respective owners.",
+    "processing": "Raster artwork normalized to transparent PNG, cropped and embedded in inert SVG."
+  },
+  {
+    "file": "categories/s.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:Linee_S_di_Milano.svg",
+    "alt": "Servizio suburbano",
+    "image_sha256": "ed24ebb50c8c77d96ae8252c034a361833aa6d0cc6375fbca0b4cb9ca51111dc",
+    "asset_sha256": "af9fee8f29351883a549df32beb343f422c184e7b46f247180af328431076c6b",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/0/04/Linee_S_di_Milano.svg",
+    "license": "PD-ineligible; trademark rights retained",
+    "processing": "Static SVG paths and groups only; metadata and editor attributes removed."
+  },
+  {
+    "file": "categories/en.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:SBB_EN_Logo.svg",
+    "alt": "EuroNight",
+    "image_sha256": "48fcb97f3997c2fbf6e26d5ca1cdbd6074e272b2ba2fd07d7cd068162190c38f",
+    "asset_sha256": "a81340693df5783a5f4d0831363eab55913d6f58cee998e15cca448f0e2cc354",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/SBB_EN_Logo.svg",
+    "license": "PD-textlogo; trademark rights retained",
+    "processing": "Static SVG paths and groups only; metadata and editor attributes removed."
+  },
+  {
+    "file": "categories/fa.svg",
+    "source": "https://it.wikipedia.org/wiki/File:Treno_Frecciargento_Logo.png",
+    "alt": "Frecciargento",
+    "image_sha256": "131b8df1cd7f37432447ae4f8c1e31bd184e02c891f610b3cbdcde3972121546",
+    "asset_sha256": "b7a8eaa8916fbc3e5c40d81ca48ee0a21d580b29ef2651c4e0b1ca3173298255",
+    "download_url": "https://upload.wikimedia.org/wikipedia/it/2/2b/Treno_Frecciargento_Logo.png",
+    "license": "Registered Trenitalia trademark; non-free artwork, used for descriptive identification. No redistribution license granted by Wikipedia.",
+    "processing": "Raster artwork normalized to transparent PNG, cropped and embedded in inert SVG."
+  },
+  {
+    "file": "categories/fb.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:Treno_Frecciabianca_logo.png",
+    "alt": "Frecciabianca",
+    "image_sha256": "d140e9bab6cb8382f1b67831f361a0800295faaf7d150fe8d0bfba950b3bfbf6",
+    "asset_sha256": "836f04398380fdba5662c8d4f65089af07535ec4ac966a4a82169c0ecabc5b06",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/f/f3/Treno_Frecciabianca_logo.png",
+    "license": "PD-textlogo; trademark rights retained",
+    "processing": "Raster artwork normalized to transparent PNG, cropped and embedded in inert SVG. White canvas removed."
+  },
+  {
+    "file": "operators/tilo.svg",
+    "source": "https://www.tilo.ch/",
+    "alt": "TILO",
+    "image_sha256": "67f9c2226689e48aa47beb68f6a2a5792c229dec8824cb89b7d8d53a8535d0fe",
+    "asset_sha256": "e0ebf382f6f6fdb9a701fd83f393314a1941fe40d8f33c7e3b3d8720b6914163",
+    "download_url": "https://www.tilo.ch/dam/jcr:0f0a21d5-5bc3-4fd4-a6fb-0dd124a9416c/Logo%20TILO%202019.2025-12-15-08-22-03.png",
+    "license": "Official operator branding; rights retained by TILO SA.",
+    "processing": "Raster artwork normalized to transparent PNG, cropped and embedded in inert SVG."
+  },
+  {
+    "file": "operators/ferrovie-sud-est.svg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ferrovie_del_Sud_Est_logo.png",
+    "alt": "Ferrovie del Sud Est",
+    "image_sha256": "99fb81eb2ef31f52e5357d3d1467ba766cef5402bf99190568b831a9092f7ba1",
+    "asset_sha256": "0cdf337f3479b2f99b08820a8669760c20d6b3fc9092ed76e4c06ac5d4a9905f",
+    "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/38/Ferrovie_del_Sud_Est_logo.png",
+    "license": "PD-textlogo; trademark rights retained",
+    "processing": "Raster artwork normalized to transparent PNG, cropped and embedded in inert SVG."
+  }
+]
