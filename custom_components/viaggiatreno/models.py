@@ -137,3 +137,22 @@ def merge_boards(arrivals: list[dict], departures: list[dict]) -> dict[str, list
             key=lambda row: (row["scheduled"] or "9999", row["train_number"]),
         )
     return result
+
+
+def combine_windows(windows: list[list[dict]]) -> list[dict]:
+    """Deduplicate complete identities; earlier/current windows are authoritative.
+
+    Never fill live fields from another window: a null can mean that a report
+    was withdrawn. Rows without a complete identity are retained, not guessed.
+    """
+    seen: set[str] = set()
+    result = []
+    for rows in windows:
+        for row in rows:
+            key = service_key(row)
+            if key is not None:
+                if key in seen:
+                    continue
+                seen.add(key)
+            result.append(row)
+    return result

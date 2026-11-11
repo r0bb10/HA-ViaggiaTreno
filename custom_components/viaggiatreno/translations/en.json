@@ -5,12 +5,12 @@
       "user": {
         "title": "Add a station",
         "description": "Search an Italian station. Each station creates arrivals, departures and a last successful refresh sensor. Data uses ViaggiaTreno's public HTTP API.",
-        "data": {"query": "Station name", "refresh_interval": "Refresh interval (seconds)"}
+        "data": {"query": "Station name", "refresh_interval": "Refresh interval (seconds)", "target_services": "Target services per board (0 = current window only)"}
       },
       "reconfigure": {
         "title": "Replace this station",
         "description": "Select a different station for this entry. Existing entity IDs are preserved, so cards and automations will now refer to the new station. To keep both stations, add another integration entry instead.",
-        "data": {"query": "Station name", "refresh_interval": "Refresh interval (seconds)"}
+        "data": {"query": "Station name", "refresh_interval": "Refresh interval (seconds)", "target_services": "Target services per board (0 = current window only)"}
       },
       "station": {
         "title": "Select station",
@@ -31,8 +31,8 @@
     "step": {
       "init": {
         "title": "Polling options",
-        "description": "Both boards refresh together. Minimum 30 seconds; default 60 seconds. Changing this reloads only this station, not Home Assistant.",
-        "data": {"refresh_interval": "Refresh interval (seconds)"}
+        "description": "Both boards refresh together. Set a target to combine later windows; the card's max_rows independently limits displayed rows. At most 8 overlapping windows are fetched, without requesting tomorrow. The target is not guaranteed when services are sparse. Zero keeps the current window only. Changing this reloads only this station.",
+        "data": {"refresh_interval": "Refresh interval (seconds)", "target_services": "Target services per board (0 = current window only)"}
       }
     }
   },
