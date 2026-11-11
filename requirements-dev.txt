@@ -1,0 +1,3 @@
+# Update the HA test plugin and its pinned HA environment together.
+pytest-homeassistant-custom-component==0.13.375
+ruff==0.17.4

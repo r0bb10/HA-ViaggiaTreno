@@ -5,12 +5,12 @@
       "user": {
         "title": "Aggiungi una stazione",
         "description": "Cerca una stazione italiana. Ogni stazione crea i sensori arrivi, partenze e ultimo aggiornamento riuscito. I dati provengono dalle API HTTP di ViaggiaTreno.",
-        "data": {"query": "Nome della stazione", "refresh_interval": "Intervallo di aggiornamento (secondi)"}
+        "data": {"query": "Nome della stazione", "refresh_interval": "Intervallo di aggiornamento (secondi)", "target_services": "Servizi da recuperare per tabellone (0 = solo finestra attuale)"}
       },
       "reconfigure": {
         "title": "Sostituisci questa stazione",
         "description": "Gli ID delle entità non cambiano: schede e automazioni si riferiranno alla nuova stazione. Per mantenere entrambe le stazioni, aggiungi un'altra istanza dell'integrazione.",
-        "data": {"query": "Nome della stazione", "refresh_interval": "Intervallo di aggiornamento (secondi)"}
+        "data": {"query": "Nome della stazione", "refresh_interval": "Intervallo di aggiornamento (secondi)", "target_services": "Servizi da recuperare per tabellone (0 = solo finestra attuale)"}
       },
       "station": {"title": "Seleziona la stazione", "data": {"station_id": "Stazione"}}
     },
@@ -28,8 +28,8 @@
     "step": {
       "init": {
         "title": "Opzioni di aggiornamento",
-        "description": "Entrambi i tabelloni si aggiornano insieme. Minimo 30 secondi; predefinito 60. La modifica ricarica solo questa stazione, non Home Assistant.",
-        "data": {"refresh_interval": "Intervallo di aggiornamento (secondi)"}
+        "description": "Entrambi i tabelloni si aggiornano insieme. Imposta un obiettivo per unire le finestre successive; max_rows della scheda limita separatamente le righe mostrate. Si recuperano al massimo 8 finestre sovrapposte, senza richiedere domani. L'obiettivo non è garantito quando i servizi sono pochi. Zero mantiene solo la finestra attuale. La modifica ricarica solo questa stazione.",
+        "data": {"refresh_interval": "Intervallo di aggiornamento (secondi)", "target_services": "Servizi da recuperare per tabellone (0 = solo finestra attuale)"}
       }
     }
   },

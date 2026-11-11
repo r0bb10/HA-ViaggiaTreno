@@ -13,6 +13,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from .api import ViaggiaTrenoClient
 from .const import DOMAIN, PLATFORMS, STATIC_URL
 from .coordinator import StationCoordinator
+from .frontend import async_register_card
 from .websocket import ws_last_report
 
 type ViaggiaTrenoConfigEntry = ConfigEntry[StationCoordinator]
@@ -30,6 +31,7 @@ async def async_setup(hass: HomeAssistant, config: dict) -> bool:
             ),
         ]
     )
+    await async_register_card(hass)
     client = ViaggiaTrenoClient(async_get_clientsession(hass))
     hass.data[DOMAIN] = client
 
