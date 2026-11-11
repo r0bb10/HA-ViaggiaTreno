@@ -1,9 +1,16 @@
 {
   "domain": "viaggiatreno",
   "name": "ViaggiaTreno",
-  "codeowners": ["@r0bb10"],
+  "categories": [
+    "vehicles_transport.public_transport"
+  ],
+  "codeowners": [
+    "@r0bb10"
+  ],
   "config_flow": true,
-  "dependencies": ["http"],
+  "dependencies": [
+    "http"
+  ],
   "documentation": "https://github.com/r0bb10/HA-ViaggiaTreno",
   "integration_type": "service",
   "iot_class": "cloud_polling",

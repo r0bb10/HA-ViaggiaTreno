@@ -1,0 +1,30 @@
+[project]
+name = "ha-viaggiatreno-development"
+version = "2026.10.1"
+requires-python = ">=3.14.2"
+
+[tool.uv]
+package = false
+
+[dependency-groups]
+dev = ["pytest-homeassistant-custom-component==0.13.375", "ruff==0.17.4"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "--strict-markers --disable-socket --allow-unix-socket --allow-hosts=127.0.0.1,::1"
+markers = ["live: explicitly opted-in live API or hardware checks (not run in CI)"]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 88
+extend-exclude = [".dev"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ASYNC230", "ASYNC240"]

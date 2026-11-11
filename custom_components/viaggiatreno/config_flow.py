@@ -30,9 +30,12 @@ from .const import (
     CONF_REFRESH_INTERVAL,
     CONF_STATION_ID,
     CONF_STATION_NAME,
+    CONF_TARGET_SERVICES,
     DEFAULT_REFRESH_INTERVAL,
+    DEFAULT_TARGET_SERVICES,
     DOMAIN,
     MAX_REFRESH_INTERVAL,
+    MAX_TARGET_SERVICES,
     MIN_REFRESH_INTERVAL,
 )
 
@@ -55,6 +58,23 @@ def interval_field(default: int):
     }
 
 
+def target_field(default: int):
+    """Configure the fetch target independently of card row limits."""
+    return {
+        schema.Optional(CONF_TARGET_SERVICES, default=default): schema.All(
+            NumberSelector(
+                NumberSelectorConfig(
+                    min=0,
+                    max=MAX_TARGET_SERVICES,
+                    step=1,
+                    mode=NumberSelectorMode.BOX,
+                )
+            ),
+            schema.Coerce(int),
+        )
+    }
+
+
 class ViaggiaTrenoFlow(ConfigFlow, domain=DOMAIN):
     """Configure a single station; multiple entries support multiple stations."""
 
@@ -63,6 +83,7 @@ class ViaggiaTrenoFlow(ConfigFlow, domain=DOMAIN):
     def __init__(self) -> None:
         self._stations: list[Station] = []
         self._interval = DEFAULT_REFRESH_INTERVAL
+        self._target = DEFAULT_TARGET_SERVICES
 
     @staticmethod
     @callback
@@ -89,8 +110,12 @@ class ViaggiaTrenoFlow(ConfigFlow, domain=DOMAIN):
             self._interval = entry.options.get(
                 CONF_REFRESH_INTERVAL, DEFAULT_REFRESH_INTERVAL
             )
+            self._target = entry.options.get(
+                CONF_TARGET_SERVICES, DEFAULT_TARGET_SERVICES
+            )
         if user_input is not None:
             self._interval = user_input[CONF_REFRESH_INTERVAL]
+            self._target = user_input.get(CONF_TARGET_SERVICES, self._target)
             default_query = user_input["query"]
             try:
                 self._stations = await self._client().search_stations(default_query)
@@ -106,6 +131,7 @@ class ViaggiaTrenoFlow(ConfigFlow, domain=DOMAIN):
                 {
                     schema.Required("query", default=default_query): TextSelector(),
                     **interval_field(self._interval),
+                    **target_field(self._target),
                 }
             ),
             errors=errors,
@@ -137,7 +163,10 @@ class ViaggiaTrenoFlow(ConfigFlow, domain=DOMAIN):
                 errors["base"] = "cannot_connect"
             else:
                 data = {CONF_STATION_ID: station.id, CONF_STATION_NAME: station.name}
-                options = {CONF_REFRESH_INTERVAL: self._interval}
+                options = {
+                    CONF_REFRESH_INTERVAL: self._interval,
+                    CONF_TARGET_SERVICES: self._target,
+                }
                 if existing is not None:
                     # The configured station changes, while entity and device IDs
                     # remain tied to the entry so existing dashboard references work.
@@ -179,10 +208,17 @@ class ViaggiaTrenoOptions(OptionsFlowWithReload):
         return self.async_show_form(
             step_id="init",
             data_schema=schema.Schema(
-                interval_field(
-                    self.config_entry.options.get(
-                        CONF_REFRESH_INTERVAL, DEFAULT_REFRESH_INTERVAL
-                    )
-                )
+                {
+                    **interval_field(
+                        self.config_entry.options.get(
+                            CONF_REFRESH_INTERVAL, DEFAULT_REFRESH_INTERVAL
+                        )
+                    ),
+                    **target_field(
+                        self.config_entry.options.get(
+                            CONF_TARGET_SERVICES, DEFAULT_TARGET_SERVICES
+                        )
+                    ),
+                }
             ),
         )

@@ -1,0 +1,28 @@
+{
+  "required_files": [
+    "brand/icon.png",
+    "brand/icon@2x.png",
+    "brand/logo.png",
+    "brand/logo@2x.png",
+    "static/categories/ec.svg",
+    "static/categories/en.svg",
+    "static/categories/fa.svg",
+    "static/categories/fb.svg",
+    "static/categories/fr.svg",
+    "static/categories/ic.svg",
+    "static/categories/icn.svg",
+    "static/categories/re.svg",
+    "static/categories/reg.svg",
+    "static/categories/rv.svg",
+    "static/categories/s.svg",
+    "static/categories/unknown.svg",
+    "static/operators/ferrovie-sud-est.svg",
+    "static/operators/intercity.svg",
+    "static/operators/tilo.svg",
+    "static/operators/trenitalia-tper.svg",
+    "static/operators/trenitalia.svg",
+    "static/operators/trenord.svg",
+    "static/operators/unknown.svg",
+    "static/viaggiatreno-card.js"
+  ]
+}

@@ -37,23 +37,24 @@ const TEXT = {
 };
 
 const STYLE = `
-  :host { display:block; min-width:0; color-scheme:inherit;
+  :host { display:block; min-width:0; margin:0; padding:0; color-scheme:inherit;
     --vt-yellow:#fdd701; --vt-pale:#fee581; --vt-grey:#565655;
     --vt-surface:var(--ha-card-background,var(--card-background-color,#fff));
     --vt-ink:var(--primary-text-color,#333); --vt-muted:var(--secondary-text-color,#656565);
     --vt-border:var(--divider-color,#d5d5d5); --vt-secondary:var(--secondary-background-color,#eee); }
   * { box-sizing:border-box; }
   ha-card { display:block; overflow:hidden; background:var(--vt-surface); color:var(--vt-ink); font-family:Arial,Helvetica,sans-serif;
-    border-radius:8px; border:1px solid var(--vt-border); box-shadow:none; }
+    margin:0; border-radius:0; border:0; box-shadow:none; }
   .top { padding:24px 26px 0; }
   .masthead { display:flex; align-items:center; justify-content:space-between; gap:16px; }
   .eyebrow { font-size:13px; font-weight:700; letter-spacing:.06em; line-height:1.5; }
   .live { font-style:italic; color:var(--vt-muted); margin-left:7px; font-weight:400; }
   .brand { display:block; width:180px; max-width:40%; height:auto; flex-shrink:0; object-fit:contain; }
-  .station { font-size:clamp(24px,3vw,36px); line-height:1.2; font-weight:800; margin:20px 0 16px;
+  .station-row { display:flex; align-items:baseline; justify-content:space-between; gap:16px; margin:20px 0 16px; }
+  .station { min-width:0; font-size:clamp(24px,3vw,36px); line-height:1.2; font-weight:800; margin:0;
     letter-spacing:.025em; overflow-wrap:anywhere; }
   .scroll:focus-visible { outline:3px solid var(--primary-color,#007d79); outline-offset:-3px; }
-  .updated { font-size:12px; color:var(--vt-muted); padding:12px 0 14px; display:flex; gap:8px; flex-wrap:wrap;
+  .updated { font-size:12px; color:var(--vt-muted); margin-left:auto; display:flex; gap:8px; flex-shrink:0;
     align-items:center; justify-content:flex-end; text-align:right; line-height:1.5; }
   .notice { background:var(--vt-surface); background:color-mix(in srgb,var(--vt-surface) 85%,var(--vt-yellow));
     color:var(--vt-ink); border-top:1px solid var(--vt-border); padding:10px 26px; font-size:13px; }
@@ -61,7 +62,7 @@ const STYLE = `
   table { width:100%; border-collapse:collapse; min-width:960px; table-layout:fixed; }
   caption { text-align:left; padding:0; }
   th { background:var(--vt-yellow); color:#333; text-align:left; padding:13px 12px;
-    font-size:13px; font-weight:700; position:sticky; top:0; z-index:1; }
+    font-size:14px; font-weight:700; position:sticky; top:0; z-index:1; }
   th:first-child, td:first-child { padding-left:26px; }
   th:last-child, td:last-child { padding-right:22px; }
   td { padding:13px 12px; height:62px; vertical-align:middle; border-bottom:3px solid var(--vt-surface);
@@ -85,7 +86,7 @@ const STYLE = `
   .cancel-label { font-size:10px; letter-spacing:.02em; white-space:normal; }
   .empty { padding:35px 24px; font-size:15px; text-align:center; background:var(--vt-secondary); color:var(--vt-muted); }
   .compact td { padding-top:7px; padding-bottom:7px; height:46px; }
-  .compact .place { font-size:13px; }
+  .compact .place, .compact th { font-size:13px; }
   .compact .time, .compact .number { font-size:16px; }
   tbody tr { cursor:pointer; }
   tbody tr:focus-visible { outline:3px solid var(--primary-color,#007d79); outline-offset:-3px; }
@@ -98,7 +99,7 @@ const STYLE = `
   .popup-report { font-size:18px; font-weight:700; line-height:1.5; }
   .sr { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
   @media(max-width:600px) {
-    .top { padding:17px 16px 0; } .station { margin-top:16px; font-size:26px; }
+    .top { padding:17px 16px 0; } .station-row { margin-top:16px; gap:8px; } .station { font-size:26px; }
     .eyebrow { font-size:11px; } .brand { width:130px; } .updated { font-size:11px; }
     th:first-child, td:first-child { padding-left:16px; } .notice { padding-left:16px; padding-right:16px; }
     table { min-width:960px; } td { height:56px; }
@@ -214,11 +215,11 @@ export class ViaggiaTrenoCard extends HTMLElement {
       ? (this._hass?.language?.startsWith("it") ? "it" : "en") : this._config.language;
   }
 
-  _time(value, full = false) {
+  _time(value, full = false, seconds = false) {
     if (!value || !Number.isFinite(new Date(value).getTime())) return "—";
     const options = full
       ? { day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }
-      : { hour: "2-digit", minute: "2-digit", hour12: false };
+      : { hour: "2-digit", minute: "2-digit", ...(seconds ? { second: "2-digit" } : {}), hour12: false };
     return new Intl.DateTimeFormat(this._locale() === "it" ? "it-IT" : "en-GB", {
       ...options, timeZone: this._hass?.config?.time_zone || "Europe/Rome",
     }).format(new Date(value));
@@ -325,11 +326,13 @@ export class ViaggiaTrenoCard extends HTMLElement {
     const eyebrow = element("div", { class: "eyebrow" }, t.masthead);
     eyebrow.append(element("span", { class: "live" }, "LIVE"));
     masthead.append(eyebrow, element("img", { class: "brand", src: "/viaggiatreno/brand/logo@2x.png", alt: "ViaggiaTreno" }));
-    top.append(masthead, element("h2", { class: "station" }, config.title || selected?.attributes.station_name || t.station));
+    const stationRow = element("div", { class: "station-row" });
+    stationRow.append(element("h2", { class: "station" }, config.title || selected?.attributes.station_name || t.station));
     const updated = element("div", { class: "updated", "aria-live": "polite" });
     const timestamps = relevant.map((s) => s?.attributes.last_refresh).filter(Boolean).sort();
-    updated.append(element("span", {}, `${t.updated}: ${this._time(timestamps[0], true)}`));
-    top.append(updated);
+    updated.append(element("span", { title: `${t.updated}: ${this._time(timestamps[0], true)}` }, `${t.updated}: ${this._time(timestamps[0], false, true)}`));
+    stationRow.append(updated);
+    top.append(masthead, stationRow);
     card.append(top);
     if (mismatch || missing || unavailable) {
       const message = mismatch ? t.mismatch : missing ? t.missing : t.unavailable;

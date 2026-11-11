@@ -16,6 +16,8 @@ async def async_get_config_entry_diagnostics(
             CONF_REFRESH_INTERVAL, DEFAULT_REFRESH_INTERVAL
         ),
         "last_update_success": coordinator.last_update_success,
+        "target_services": coordinator.target_services,
+        "window_count": coordinator.data.get("window_count", 1),
         "last_success": (
             coordinator.last_success.isoformat() if coordinator.last_success else None
         ),
